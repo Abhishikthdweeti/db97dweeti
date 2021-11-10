@@ -1,8 +1,15 @@
 var fan = require('../models/Fan');
-// List of all fan
-exports.fan_list = function(req, res) {
-res.send('NOT IMPLEMENTED: fan list');
-};
+// List of all Costumes 
+exports.fan_list = async function(req, res) { 
+    try{ 
+        thefans = await fan.find(); 
+        res.send(thefans); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
 // for a specific fan.
 exports.fan_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: fan detail: ' + req.params.id);
