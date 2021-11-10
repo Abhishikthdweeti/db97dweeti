@@ -12,6 +12,8 @@
     "http-errors": "~1.6.3",
     "mongo": "^0.1.0",
     "mongod": "^2.0.0",
+    "mongodb": "^4.1.4",
+    "mongoose": "^6.0.12",
     "morgan": "~1.9.1",
     "pug": "2.0.0-beta11"
   }
