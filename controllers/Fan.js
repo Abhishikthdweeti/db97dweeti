@@ -26,3 +26,14 @@ res.send('NOT IMPLEMENTED: fan delete DELETE ' + req.params.id);
 exports.fan_update_put = function(req, res) {
 res.send('NOT IMPLEMENTED: fan update PUT' + req.params.id);
 };
+// VIEWS
+// Handle a show all view
+exports.fan_view_all_Page = async function(req, res) {
+    try{
+    thefans = await fan.find();
+    res.render('Fan', { title: 'fan Search Results', results: thefans });
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };

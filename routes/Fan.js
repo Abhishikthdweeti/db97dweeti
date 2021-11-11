@@ -1,9 +1,7 @@
 var express = require('express');
+const fan_controlers= require('../controllers/Fan')
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('Fan', { title: 'Search Results  Fan' });
-});
+/* GET fan */
+router.get('/', fan_controlers.fan_view_all_Page);
 
 module.exports = router;
