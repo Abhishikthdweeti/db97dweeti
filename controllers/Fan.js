@@ -15,9 +15,24 @@ exports.fan_detail = function(req, res) {
 res.send('NOT IMPLEMENTED: fan detail: ' + req.params.id);
 };
 // Handle fan create on POST.
-exports.fan_create_post = function(req, res) {
-res.send('NOT IMPLEMENTED: fan create POST');
-};
+exports.fan_create_post = async function(req, res) {
+    console.log(req.body)
+    let document = new fan();
+    // We are looking for a body, since POST does not have query parameters.
+    // Even though bodies can be in many different formats, we will be picky
+    // and require that it be a json object
+    // {"costumetype":"goat", "cost":12, "size":"large"}
+    document.fan_type = req.body.fan_type;
+    document.model = req.body.model;
+    document.cost = req.body.cost;
+    try{
+    let result = await document.save();
+    res.send(result);
+    }
+    catch(err){
+    res.error(500,`{"error": ${err}}`);
+    }
+    };
 // Handle fan delete form on DELETE.
 exports.fan_delete = function(req, res) {
 res.send('NOT IMPLEMENTED: fan delete DELETE ' + req.params.id);
