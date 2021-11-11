@@ -30,7 +30,7 @@ res.send('NOT IMPLEMENTED: fan update PUT' + req.params.id);
 // Handle a show all view
 exports.fan_view_all_Page = async function(req, res) {
     try{
-    thefans = await fan.find();
+    let thefans = await fan.find();
     res.render('Fan', { title: 'fan Search Results', results: thefans });
     }
     catch(err){

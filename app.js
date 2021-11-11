@@ -44,9 +44,9 @@ db.once("open", function(){
 async function recreateDB(){ 
   // Delete everything 
   await fan.deleteMany(); 
-  let instance1 = new fan({fan_type:"Table Fan", Model:" Table",Cost:20});
-  let instance2 = new fan({fan_type:"Ceiling Fan", Model:" Round",Cost:100});
-  let instance3 = new fan({fan_type:"Rounded Fan", Model: " Ceilig",Cost:250});
+  let instance1 = new fan({fan_type:"Table Fan", model:" Table",cost:20});
+  let instance2 = new fan({fan_type:"Ceiling Fan", model:" Round",cost:100});
+  let instance3 = new fan({fan_type:"Rounded Fan", model: " Ceilig",cost:250});
   instance1.save( function(err,doc) {
   if(err) return console.error(err);
   console.log("First object saved")

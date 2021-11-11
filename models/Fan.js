@@ -8,7 +8,7 @@ fan_type:{
 },
 
 model: {
-    type:Number,
+    type:String,
 },
 
 cost: {
