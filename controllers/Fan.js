@@ -1,5 +1,5 @@
 var fan = require('../models/Fan');
-// List of all Costumes 
+// List of all fans 
 exports.fan_list = async function(req, res) { 
     try{ 
         thefans = await fan.find(); 
@@ -21,7 +21,7 @@ exports.fan_create_post = async function(req, res) {
     // We are looking for a body, since POST does not have query parameters.
     // Even though bodies can be in many different formats, we will be picky
     // and require that it be a json object
-    // {"costumetype":"goat", "cost":12, "size":"large"}
+    // {"fantype":"goat", "cost":12, "size":"large"}
     document.fan_type = req.body.fan_type;
     document.model = req.body.model;
     document.cost = req.body.cost;
@@ -52,3 +52,14 @@ exports.fan_view_all_Page = async function(req, res) {
     res.error(500,`{"error": ${err}}`);
     }
     };
+    // for a specific Fan.
+exports.fan_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await fan.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   }
