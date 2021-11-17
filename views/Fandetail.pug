@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1= title
+  - let fanid = toShow._id   
+  - let fan_type = toShow.fan_type
+  - let model = toShow.model
+  - let cost = toShow.cost
+  div
+    div.row
+      div(class='fanAttr mr-3') fan ID is:
+      div #{fanid}
+    div.row
+      div(class='fanAttr mr-3') fan fanType is:
+      div #{fan_type}
+    div.row
+      div(class='fanAttr mr-3') fan color is:
+      div #{model}
+    div.row
+      div(class='fanAttr mr-3') fan price is:
+      div #{cost}

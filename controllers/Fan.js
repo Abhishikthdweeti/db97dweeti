@@ -91,3 +91,19 @@ exports.fan_detail = async function(req, res) {
     res.send(`{"error": document for id ${req.params.id} not found`);
     }
    }
+
+   // Handle a show one view with id specified by query
+exports.fan_view_one_Page = async function(req, res) {
+    console.log("single view for id "  + req.query.id)
+    try{
+        result = await fan.findById( req.query.id)
+        res.render('fandetail', {
+            title: 'fan Detail', 
+            toShow: result
+        });
+    }
+    catch(err){
+        res.status(500)
+        res.send(`{'error': '${err}'}`);
+    }
+};
