@@ -1,0 +1,42 @@
+extends layout
+
+block content
+    h1= title
+
+    - let fanid = toShow._id
+    - let fan_type = toShow.fan_type 
+    - let fanmodel = toShow.model
+    - let fancost = toShow.cost
+    div
+        div.row
+            div(class='fanAttr mr-3') fan ID is:
+            div(id="fanid") #{fanid}
+        div.row
+            div(class='fanAttr mr-3') fan type is:
+            div #{fan_type}
+        div.row
+            div(class='fanAttr mr-3') fan model is:
+            div #{fanmodel}
+        div.row
+            div(class='fanAttr mr-3') fan cost is:
+            div #{fancost}
+        div.row
+            button(class='btn btn-success'  type="submit" onclick=`deletefan()`) Delete
+
+    script.
+        function deletefan() {
+            var value=document.getElementById("fanid").innerHTML;
+            console.log(value)
+            // TODO do something here to show user that form is being submitted
+            fetch('/resource/fans/'+ value, {
+                method: 'DELETE'
+            }).then((resp) => {
+                return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+                alert("Delete succeded")
+                 // TODO handle body
+            }).catch((error) => {
+                // TODO handle error
+                alert("Delete failed " + error )
+            });
+        };
