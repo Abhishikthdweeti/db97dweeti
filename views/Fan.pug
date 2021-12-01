@@ -8,6 +8,12 @@ block content
       alert('Purchased Item: ' + x)
    } 
   div(class='container-fluid')
-    div(class='row')
+    div(class='row m-1')
       each f, index in fan 
-        div(class='col-sm-2' onclick='buy('+index+')') #{f.fan_type} #{f.model} #{f.cost}
+        - let destination = `dispatch(\"/fan/update?id=${f._id}\")` 
+        div(class="row-sm-2", class="m-1") Item #{f.fan_type}(#{f.model}) is #{f.cost}
+         button.btn( class="btn-primary ml-1", onclick= destination) Update 
+  script. 
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
