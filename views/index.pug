@@ -2,26 +2,27 @@ extends layout
 
 block content
   h1= title
-  p Welcome to Assignment-10 
+  p Welcome to the page #{title}
+  p Abhishikth Dweeti
   if (!user)
     a(href="/login") Login
     br
     a(href="/register") Register
   if (user)
     p You are currently logged in as #{user.username}
-    a(href="/Fan") Take me to Fan
+    a(href="/fans") Take me to fans
     br
     a(href="/logout") Logout
   br
-  button(type="button", class="btn btn-secondary" onclick='update()') press me
+  button(type="button", class="btn btn-secondary" onclick='update()') press me 
   br
   br
-  brdiv(id='target') Display 
+  div(id='target') Display
+  br
+  a(href='/fans') Search fans page
   script.
     var client_count = 0;
     function update(){
       client_count++
       document.getElementById("target").innerHTML = `Value now ${client_count}`
     }
-    
-    

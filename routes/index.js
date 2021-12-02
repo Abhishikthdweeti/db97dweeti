@@ -14,10 +14,10 @@ var passport = require('passport');
 var router = express.Router();
 var Account = require('../models/account');
 router.get('/', function (req, res) {
-res.render('index', { title: 'Pen App', user : req.user });
+res.render('index', { title: 'fans App', user : req.user });
 });
 router.get('/register', function(req, res) {
-res.render('register', { title: 'Pen App Registration'});
+res.render('register', { title: 'fans App Registration'});
 });
 router.post('/register', function(req, res) {
 Account.findOne({ username : req.body.username },
@@ -46,11 +46,14 @@ res.redirect('/');
 })
 })
 router.get('/login', function(req, res) {
-res.render('login', { title: 'Pen App Login', user : req.user });
+res.render('login', { title: 'fans App Login', user : req.user });
 });
 router.post('/login', passport.authenticate('local'), function(req, res) {
-res.redirect('/');
+  if(req.session.returnTo)
+   res.redirect(req.session.returnTo);
+  res.redirect('/');
 });
+
 router.get('/logout', function(req, res) {
 req.logout();
 res.redirect('/');
@@ -58,4 +61,4 @@ res.redirect('/');
 router.get('/ping', function(req, res){
 res.status(200).send("ping!");
 });
-module.exports = router; 
+module.exports = router;
